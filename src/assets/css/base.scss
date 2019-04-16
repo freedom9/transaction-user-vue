@@ -1,0 +1,171 @@
+/* 移除常用标签的浏览器默认 margin padding */
+body, p, h1, h2, h3, h4, h5, h6, dl, dd, ul, ol, th, td, button, figure, input, textarea, form {
+  margin: 0;
+  padding: 0;
+}
+
+/* 修改常用标签的默认样式 */
+a {
+  color: #666;
+  &:link,
+  &:active,
+  &:visited,
+  &:hover {
+    text-decoration: none;
+  }
+  cursor: pointer
+}
+ul, ol {
+  list-style: none;
+}
+
+/**
+ * 不同浏览器的 input、select、textarea 的盒子模型宽度计算方式不同，统一为最常见的 content-box
+ */
+ input, select, textarea {
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+}
+
+#app {
+  .app-view {
+    .content-view {
+      background: #ccc;
+      padding-right: 120px;
+      padding-left: 120px;
+      padding-top: 20px;
+    }
+  }
+}
+
+/* 循环生成1-500的margin、padding */
+@for $i from 1 through 500 {
+  .m-#{$i} {
+    margin: #{$i}px;
+  }
+  .m-lv-#{$i} {
+    margin-left: #{$i}px;
+    margin-right: #{$i}px;
+  }
+  .m-v-#{$i} {
+    margin-top: #{$i}px;
+    margin-bottom: #{$i}px;
+  }
+  .m-t-#{$i} {
+    margin-top: #{$i}px;
+  }
+  .m-b-#{$i} {
+    margin-bottom: #{$i}px;
+  }
+  .m-l-#{$i} {
+    margin-left: #{$i}px;
+  }
+  .m-r-#{$i} {
+    margin-right: #{$i}px;
+  }
+  .p-#{$i} {
+    padding: #{$i}px;
+  }
+  .p-lv-#{$i} {
+    padding-left: #{$i}px;
+    padding-right: #{$i}px;
+  }
+  .p-v-#{$i} {
+    padding-top: #{$i}px;
+    padding-bottom: #{$i}px;
+  }
+  .p-t-#{$i} {
+    padding-top: #{$i}px;
+  }
+  .p-b-#{$i} {
+    padding-bottom: #{$i}px;
+  }
+  .p-l-#{$i} {
+    padding-left: #{$i}px;
+  }
+  .p-r-#{$i} {
+    padding-right: #{$i}px;
+  }
+}
+
+/* 循环生成宽度、高度 */
+@for $i from 1 through 500 {
+  .w-#{$i} { // 单位（px）
+    width: #{$i}px;
+  }
+  .w-p-#{$i} { // 单位（%）
+    width: #{$i*1%};
+  }
+  .h-#{$i} {
+    height: #{$i}px;
+  }
+  .h-p-#{$i} {
+    height: #{$i*1%};
+  }
+}
+
+/* 循环生成字体 */
+@for $i from 1 through 50 {
+  .f-#{$i} {
+    font-size: #{$i}px;
+  }
+}
+
+/* 常用css属性 */
+.b-o {
+  border: 1px solid #dfdfdf;
+}
+.b-b {
+  border-bottom: 1px solid #dfdfdf;
+}
+.b-t {
+  border-top: 1px solid #dfdfdf;
+}
+.b-r {
+  border-right: 1px solid #dfdfdf;
+}
+.b-l {
+  border-left: 1px solid #dfdfdf;
+}
+
+.a-c {
+  text-align: center;
+}
+.a-r {
+  text-align: right;
+}
+.a-l {
+  text-align: left;
+}
+
+.p-r {
+  position: relative;
+}
+.p-a {
+  position: absolute;
+}
+.p-f {
+  position: fixed;
+}
+
+.f-l {
+  float: left;
+}
+.f-r {
+  float: right;
+}
+
+.o-h {
+  overflow: hidden;
+}
+
+.l-s {
+  letter-spacing: 5px;
+}
+.c-p {
+  cursor: pointer;
+}
+.bg-white {
+  background: #fff;
+}
