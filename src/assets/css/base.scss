@@ -1,3 +1,21 @@
+html {
+  /* 标准字体大小设置 14 像素 */
+  font-size: 14px;
+  height: 100%;
+}
+
+html, body {
+  background-color: #ccc;
+  /*禁用横向滚动*/
+  overflow-x: hidden;
+  width: 100%;
+  /*取消部分浏览器点击有阴影*/
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  /*优化移动端滚动事件*/
+  -webkit-overflow-scrolling: touch;
+  overflow-scrolling: touch;
+}
+
 /* 移除常用标签的浏览器默认 margin padding */
 body, p, h1, h2, h3, h4, h5, h6, dl, dd, ul, ol, th, td, button, figure, input, textarea, form {
   margin: 0;
@@ -29,9 +47,12 @@ ul, ol {
 }
 
 #app {
+  height: 100%;
   .app-view {
+    min-width: 1200px;
+    height: 100%;
     .content-view {
-      background: #ccc;
+      // background: #ccc;
       padding-right: 120px;
       padding-left: 120px;
       padding-top: 20px;

@@ -1,6 +1,7 @@
 <template>
   <div>
-    <el-form :model="dataForm" ref="dataForm" :rules="dataRule" label-width="80px">
+    <div class="publish p-20">
+      <el-form :model="dataForm" ref="dataForm" :rules="dataRule" label-width="80px">
       <el-upload
         class="avatar-uploader a-c"
         :headers="{token}"
@@ -55,10 +56,11 @@
         <el-input v-model="dataForm.description" type="textarea" placeholder="商品描述"></el-input>
       </el-form-item>
     </el-form>
-    <span slot="footer" class="dialog-footer">
+    <div slot="footer" class="dialog-footer a-c">
       <el-button @click="visible = false">取消</el-button>
       <el-button type="primary" @click="publish()">确定</el-button>
-    </span>
+    </div>
+    </div>
   </div>
 </template>
 
@@ -203,6 +205,9 @@ export default {
 </script>
 
 <style>
+.publish {
+  background-color: #fff;
+}
 .avatar-uploader .el-upload {
     border: 1px dashed #d9d9d9;
     border-radius: 6px;

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="h-p-100">
     <div v-if="goodsList.length>0" class="list1 m-l-10 p-5">
 			<bs-product :list="item" class="m-lv-5 m-b-10 b-o" v-for="(item, index) in goodsList" :key="index"></bs-product>
 		</div>
@@ -23,7 +23,7 @@ export default {
       isFixed: false,
       goodsList: [],
       pageIndex: 1,
-      pageSize: 10,
+      pageSize: 20,
       totalPage: 0
     }
   },

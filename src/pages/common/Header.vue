@@ -8,7 +8,7 @@
       </div>
       <div v-else>
         <div class="lr p-lv-15 f-l">
-        <span class="el-dropdown-link">
+        <span class="el-dropdown-link" @click="$router.push('/user')">
           <img src="~@/assets/images/head1.jpg">
           <span>admin</span>
         </span>
