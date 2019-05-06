@@ -13,8 +13,8 @@ module.exports = {
     // 代理列表, 是否开启代理通过[./dev.env.js]配置
     proxyTable: {
       '/api': {
-        target: 'http://39.108.6.26:8088/transaction',
-        // target: 'http://localhost:8088/transaction',
+        // target: 'http://39.108.6.26:8088/transaction',
+        target: 'http://localhost:8088/transaction',
         changeOrigin: true
       }
     },

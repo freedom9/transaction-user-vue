@@ -85,7 +85,6 @@ export default {
         'captcha': this.dataForm.captcha
       }
       const { data } = await this.$store.dispatch('login', params)
-      console.log(data)
       if (data.code === 200) {
         Cookies.set('token', data.token)
         localStorage.setItem('userId', data.userId)

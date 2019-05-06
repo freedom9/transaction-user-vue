@@ -8,15 +8,15 @@
       </div>
       <div v-else>
         <div class="lr p-lv-15 f-l">
-        <span class="el-dropdown-link" @click="$router.push('/user')">
+        <span class="el-dropdown-link" @click="$router.push('/user/mypublish')">
           <img src="~@/assets/images/head1.jpg">
-          <span>admin</span>
+          <span>{{userInfo.username}}</span>
         </span>
         </div>
         <div class="lr p-lv-15 f-l" @click="logout()">退出</div>
       </div>
     </div>
-    <slot v-if="this.currentRouter !== '/publish'">
+    <slot v-if="this.currentRouter !== '/publish' && !this.currentRouter.includes('/user')">
       <div class="feature p-v-17 w-p-100" :class="{'fixed': isFixed}">
         <el-input class="w-250 m-l-120" placeholder="商品名" v-model="dataForm.name" clearable></el-input>
         <el-button @click="onSearch()">查询</el-button>
@@ -47,6 +47,7 @@ export default {
       dataForm: {
         name: ''
       },
+      userInfo: Object,
       isFixed: false,
       loginVisible: false,
       registerVisible: false
@@ -66,12 +67,36 @@ export default {
       return this.$route.path
     }
   },
+  watch: {
+    'isLogin': function (cur) {
+      if (cur) {
+        this.getUserInfo()
+      }
+    }
+  },
+  created () {
+    if (this.isLogin) this.getUserInfo()
+  },
   methods: {
+    // 获取用户信息
+    async getUserInfo () {
+      let params = {
+        'id': Number(localStorage.getItem('userId'))
+      }
+      const { data } = await this.$store.dispatch('getUserInfo', params)
+      if (data && data.code === 200) {
+        this.userInfo = data.data
+      }
+    },
     onSearch () {
       this.$router.push({ path: '/search', query: { keyword: this.dataForm.name } })
     },
     publish () {
-      this.$router.push('/publish')
+      if (!this.isLogin) {
+        this.$store.commit('setLoginDialog', true)
+      } else {
+        this.$router.push('/publish')
+      }
     },
     navFixed () {
       let scrollTop = document.documentElement.scrollTop || document.body.scrollTop
@@ -105,7 +130,6 @@ export default {
     }
   },
   mounted () {
-    console.log(this.getToken)
     window.addEventListener('scroll', this.navFixed)
   }
 }

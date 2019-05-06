@@ -33,7 +33,7 @@ axiosInstance.interceptors.response.use((response) => {
   if (response.data.code === 401 || response.data.code === 403) {
     // router.push('/login')
     // Vue.$message.error(response.data.msg)
-    store.commit('setLoginDialg', true)
+    store.commit('setLoginDialog', true)
     return Promise.reject(new Error({ code: response.data.code, msg: response.data.msg }))
   } else {
     return Promise.resolve(response.data)

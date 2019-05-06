@@ -2,12 +2,11 @@
   <div>
     <div class="user-sider f-l m-r-20">
       <div>
-        <img class="user-header" src="" alt="">
-        <a class="username" href="">白贱亮</a>
+        <img class="user-header" src="~@/assets/images/head1.jpg" alt="">
       </div>
       <div class="user-nav">
         <ul>
-          <li @click="$router.push('/user/' + item.router)" v-for="(item, index) in nav" :key="index"><a href="javascript:;">{{item.label}}</a></li>
+          <li :class="{actived: idx === index}" @click="idx = index;$router.push('/user/' + item.router)" v-for="(item, index) in nav" :key="index"><a href="javascript:;">{{item.label}}</a></li>
         </ul>
       </div>
     </div>
@@ -23,12 +22,11 @@ export default {
     return {
       nav: [
         { label: '我发布的', router: 'mypublish' },
-        { label: '我想要的', router: 'mywant' },
-        { label: '我的留言', router: '' },
-        { label: '个人信息', router: '' },
-        { label: '实名认证', router: '' },
-        { label: '意见反馈', router: '' }
-      ]
+        { label: '我收藏的', router: 'mywant' },
+        { label: '我的聊天', router: 'chat' },
+        { label: '个人信息', router: 'userInfo' }
+      ],
+      idx: 0
     }
   }
 }
@@ -37,7 +35,7 @@ export default {
 <style lang="scss">
 .user-sider {
   background: #fff;
-  padding: 20px;
+  padding: 18px;
   border: #e5e5e5 solid 1px;
   width: 15%;
   min-height: 500px;
@@ -61,6 +59,12 @@ export default {
     margin-top: 15px;
     padding: 10px 0;
     ul li {
+      &.actived {
+        a {
+          background-color: #11cd6e;
+          color: #fff;
+        }
+      }
       &:hover {
         background: #ccc;
       }
@@ -68,15 +72,11 @@ export default {
       a {
         line-height: 40px;
         display: block;
-        &:active {
-          background-color: #11cd6e;
-          color: #fff;
-        }
       }
     }
   }
 }
 .user-main {
-  width: 70%;
+  width: 78%;
 }
 </style>

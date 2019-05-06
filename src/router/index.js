@@ -8,6 +8,8 @@ import Publish from '@/pages/common/Publish'
 import User from '@/pages/user/User'
 import MyPublish from '@/pages/user/MyPublish'
 import MyWant from '@/pages/user/MyWant'
+import UserInfo from '@/pages/user/UserInfo'
+import Chat from '@/pages/user/Chat'
 
 Vue.use(Router)
 
@@ -52,6 +54,16 @@ export default new Router({
               path: 'mywant',
               name: 'mywant',
               component: MyWant
+            },
+            {
+              path: 'userInfo',
+              name: 'userInfo',
+              component: UserInfo
+            },
+            {
+              path: 'chat',
+              name: 'chat',
+              component: Chat
             }
           ]
         }
