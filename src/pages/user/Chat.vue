@@ -3,7 +3,7 @@
     <el-container>
       <el-aside width="160px">
         <div class="friendListDiv f-18" style="background: #11cd6e;">会话</div>
-        <div class="friendListDiv bg-white" v-for="(item,index) in usersList" :key="index" @click="msgListByTwoId(item.userId)">
+        <div class="friendListDiv bg-white" :class="{chatting: item.userId === chatUserId}" v-for="(item,index) in usersList" :key="index" @click="msgListByTwoId(item.userId)">
           <el-badge>{{item.username}}</el-badge>
         </div>
         <div style="background-color: #20a0ff;height: 1px;width: 160px;"/>
@@ -48,11 +48,18 @@ export default{
       usersList: [],
       msgList: [],
       content: '',
-      chatUserId: '',
+      chatUserId: null,
       chatUserName: ''
     }
   },
+  computed: {
+    userId () {
+      return this.$route.query.userId
+    }
+  },
   created () {
+    this.chatUserId = parseInt(this.userId)
+    this.msgListByTwoId(this.chatUserId)
     this.selectUsersByUserId()
   },
   methods: {
@@ -97,6 +104,9 @@ export default{
 </script>
 
 <style lang="scss">
+    .chatting {
+      background: #9eea6a !important;
+    }
    .send-font {
      word-break: break-all;
      display: inline-flex;

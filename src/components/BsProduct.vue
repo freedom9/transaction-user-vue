@@ -116,7 +116,7 @@ export default {
         }
         const { data } = await this.$store.dispatch('seedMsg', params)
         if (data.code === 200) {
-          this.$router.push('/user/chat')
+          this.$router.push({ path: '/user/chat', query: { userId } })
         }
       }
     }
