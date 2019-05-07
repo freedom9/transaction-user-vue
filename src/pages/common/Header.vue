@@ -125,6 +125,7 @@ export default {
           Cookies.remove('token')
           this.$message.success(data.msg)
           this.$store.commit('setIsLogin', false)
+          this.$router.push('/')
         }
       }).catch(() => {})
     }

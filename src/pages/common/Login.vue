@@ -1,5 +1,6 @@
 <template>
   <el-dialog
+    :append-to-body="true"
     width="350px"
     title="登录"
     :close-on-click-modal="false"

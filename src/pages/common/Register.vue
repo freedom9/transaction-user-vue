@@ -1,5 +1,7 @@
 <template>
   <el-dialog
+    :append-to-body="true"
+    custom-class="dialog-custom"
     width="450px"
     title="注册"
     :close-on-click-modal="false"
@@ -31,12 +33,16 @@
       <el-button @click="visible = false">取消</el-button>
       <el-button type="primary" @click="dataFormSubmit()">确定</el-button>
     </span>
+    <Login v-if="loginVisible" ref="login"></Login>
   </el-dialog>
 </template>
 
 <script>
+import Login from './Login'
+
 import { isMobile } from '@/utils/validate'
 export default {
+  components: { Login },
   data () {
     var validatePassword = (rule, value, callback) => {
       if (!this.dataForm.id && !/\S/.test(value)) {
@@ -62,6 +68,7 @@ export default {
       }
     }
     return {
+      loginVisible: false,
       visible: false,
       roleList: [],
       dataForm: {
@@ -116,6 +123,7 @@ export default {
             'status': this.dataForm.status,
             'roleIds': this.dataForm.roleIds
           }
+          let _this = this
           const { data } = await this.$store.dispatch('register', params)
           if (data.code === 201) {
             this.$message({
@@ -125,6 +133,10 @@ export default {
               onClose: () => {
                 this.visible = false
                 this.$store.commit('setLoginDialg', false)
+                this.loginVisible = true
+                this.$nextTick(() => {
+                  _this.$refs.login.init()
+                })
               }
             })
           } else {
@@ -136,3 +148,9 @@ export default {
   }
 }
 </script>
+
+<style>
+.dialog-custom {
+
+}
+</style>
