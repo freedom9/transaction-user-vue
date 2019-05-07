@@ -28,6 +28,18 @@ export default {
       ],
       idx: 0
     }
+  },
+  created () {
+    // 通过路由控制菜单高亮
+    if (this.$route.query.userId || this.$route.fullPath === '/user/chat') {
+      this.idx = 2
+    } else if (this.$route.fullPath === '/user/mypublish') {
+      this.idx = 0
+    } else if (this.$route.fullPath === '/user/mywant') {
+      this.idx = 1
+    } else if (this.$route.fullPath === '/user/userInfo') {
+      this.idx = 3
+    }
   }
 }
 </script>

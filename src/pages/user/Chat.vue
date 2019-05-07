@@ -32,7 +32,7 @@
             </div>
           </div>
         </div>
-        <div class="a-l m-t-15 w-p-600">
+        <div @keyup.enter="sendMsg" class="a-l m-t-15 w-p-600">
           <el-input v-model="content" placeholder="请输入内容" size="small" style="width: 580px;"></el-input>
           <el-button size="small" :disabled="!chatUserId" type="primary" @click="sendMsg()">发送</el-button>
         </div>
