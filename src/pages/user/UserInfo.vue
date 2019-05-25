@@ -72,7 +72,6 @@ export default {
     }
     return {
       visible: false,
-      roleList: [],
       dataForm: {
         id: 0,
         username: '',
@@ -82,7 +81,8 @@ export default {
         mobile: '',
         school: '',
         address: '',
-        sex: 0
+        sex: 0,
+        roleIds: []
       },
       dataRule: {
         username: [
@@ -125,6 +125,7 @@ export default {
         this.dataForm.school = data.data.school
         this.dataForm.address = data.data.address
         this.dataForm.sex = data.data.sex
+        this.dataForm.roleIds = data.data.roleIds
       }
     },
     // 表单提交
@@ -140,7 +141,8 @@ export default {
             'mobile': this.dataForm.mobile,
             'school': this.dataForm.school,
             'address': this.dataForm.address,
-            'sex': this.dataForm.sex
+            'sex': this.dataForm.sex,
+            'roleIds': this.dataForm.roleIds
           }
           const { data } = await this.$store.dispatch('updateUser', params)
           if (data && data.code === 201) {
